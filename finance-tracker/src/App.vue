@@ -1,47 +1,61 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div id="layout">
+    <header>
+  
+      <div class="wrapper">
+  
+          <nav>
+            <span class="menuitem">
+              <RouterLink to="/">Home</RouterLink>
+            </span>
+           <span class="menuitem">
+             <span> | </span>
+             <RouterLink to="/books">Books</RouterLink>
+           </span> 
+           <span class="menuitem">
+             <span> | </span>
+             <RouterLink to="/register">Register</RouterLink>
+           </span> 
+           <span class="menuitem">
+             <span> | </span>
+             <RouterLink to="/login">Login</RouterLink>
+           </span> 
+           <span class="menuitem">
+             <span> | </span>
+             <RouterLink to="/usersettings">User Settings</RouterLink>
+           </span> 
+          
+          </nav>
+      </div>
+    </header>
+  </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <RouterView />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+#layout {
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+  -webkit-font-smooting: antialiased;
+  -moz-osx-font-smooting: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.menuitem {
+  margin: 1 rem;
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+nav {
+  padding: 30px;
+}
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
