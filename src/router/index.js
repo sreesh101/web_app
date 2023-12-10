@@ -5,6 +5,7 @@ import { auth } from '@/js/firebase'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  base: '/web_app/',
   routes: [
     {
       path: '/',
