@@ -40,6 +40,12 @@ const extraIncome = computed(() => {
   }
   return 0
 })
+
+const updateExpense = (expenseField, amount) => {
+  if (userData.value) {
+    userData.value[expenseField] += amount;
+  }
+};
 </script>
 
 <template>
@@ -50,10 +56,22 @@ const extraIncome = computed(() => {
         <!-- Display expense values -->
         <div class="expense-values">
           <p><strong>Income:</strong> {{ userData.Income }}</p>
-          <p><strong>Rent Expense:</strong> {{ userData.Rent }}</p>
-          <p><strong>Food Expense:</strong> {{ userData.Food }}</p>
-          <p><strong>Entertainment Expense:</strong> {{ userData.Entertainment }}</p>
-          <p><strong>Savings:</strong> {{ userData.Savings }}</p>
+          <p><strong>Rent Expense:</strong> {{ userData.Rent }}
+            <button @click="updateExpense('Rent', 100)">+ $100</button>
+            <button @click="updateExpense('Rent', -100)">- $100</button>
+          </p>
+          <p><strong>Food Expense:</strong> {{ userData.Food }}
+            <button @click="updateExpense('Food', 100)">+ $100</button>
+            <button @click="updateExpense('Food', -100)">- $100</button>
+          </p>
+          <p><strong>Entertainment Expense:</strong> {{ userData.Entertainment }}
+            <button @click="updateExpense('Entertainment', 100)">+ $100</button>
+            <button @click="updateExpense('Entertainment', -100)">- $100</button>
+          </p>
+          <p><strong>Savings:</strong> {{ userData.Savings }}
+            <button @click="updateExpense('Savings', 100)">+ $100</button>
+            <button @click="updateExpense('Savings', -100)">- $100</button>
+          </p>
           <p><strong>Extra Income:</strong> {{ extraIncome }}</p>
         </div>
         <div class="expense-bars">
@@ -83,17 +101,8 @@ const extraIncome = computed(() => {
   text-align: center;
 }
 
-.logged-in-section {
+.expense-values {
   margin-top: 20px;
-  padding: 20px;
-  border: 2px solid #4caf50;
-  border-radius: 8px;
-  background-color: #e6ffe6;
-}
-
-.page-title {
-  font-size: 24px;
-  margin-bottom: 20px;
 }
 
 .expense-bars {
@@ -128,5 +137,4 @@ const extraIncome = computed(() => {
 .extra-bar {
   background-color: #580582;
 }
-
 </style>
